@@ -27,6 +27,12 @@ ollama serve
 **NOTE**: You might get `Error: listen tcp 127.0.0.1:11434: bind: address already in use`. Usually this means that ollama server is already running. Otherwise check the processes on your system.
 
 ### Python Setup
+Right now I don't have a release method, so you will have to clone the project locally to your device. Navigate to the folder you want to install and run these commands.
+
+```bash
+git clone https://github.com/muddi900/deepseek-local-chat
+cd deepseek-local-chat
+```
 
 Create a virtualenv, I am using version 3.12, but it should be usable for 3.10+:
 
@@ -34,28 +40,17 @@ Create a virtualenv, I am using version 3.12, but it should be usable for 3.10+:
 python3.12 -m venv venv
 ```
 
-I am using Chainlit to build the UI and black for code formatting
-
-
-```bash
-pip install chainlit black
-```
-
-or 
+I am using Chainlit to build the UI and ollama for code formatting
 
 ```bash
-pip install -r requirements.txt
+pip install chainlit ollama
 ```
 
 ## Run
 
-Running it is quite simple:
+Running it is quite simple. If you are in the `deepseek-local-chat` folder:
 
 ```bash
 chainlit run main.py   
 ```
-
-![image](screenshot.png)
-
-It will only answer the hardcoded questions from the thoughtful AI dataset. You can check it out in [main.py](main.py)
 
