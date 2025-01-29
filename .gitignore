@@ -5,3 +5,4 @@ chainlit.md
 .mypy*
 .files
 .vscode
+.env

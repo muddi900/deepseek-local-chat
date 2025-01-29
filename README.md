@@ -10,8 +10,10 @@ We are using the Ollama backend for this. You can find the instruction to instal
 
 Install the deepseek model locally and run it for testing
 
+
 ```bash
-ollama run deepseek-r1:7b
+export R1_VARIANT=deepseek-r1:7b #add the variant you want to work with on locally.
+ollama run $R1_VARIANT
 ```
 I am running it on a laptop with on 16 gigs of memory and a simple GPU, so I am running the 7b variant. If you have a high-end gpu with a large memory size, you can use higher-end variants. 
 
