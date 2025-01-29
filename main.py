@@ -1,5 +1,9 @@
+import os
 import chainlit as cl
 import ollama
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 @cl.on_chat_start
@@ -13,7 +17,11 @@ async def on_message(message: cl.Message):
     chat_history.append({"role": "user", "content": message.content})
 
     resp = cl.Message(content="")
-    chat_resp = ollama.chat(model="deepseek-r1:7b", messages=chat_history, stream=True)
+    chat_resp = ollama.chat(
+        model=os.getenv("R1_VARIANT", "deepseek-r1:7b"),
+        messages=chat_history,
+        stream=True,
+    )
 
     final = ""
     for cr in chat_resp:
@@ -28,5 +36,5 @@ async def on_message(message: cl.Message):
         }
     )
 
-    cl.user_session.set("chat_history",chat_history)
+    cl.user_session.set("chat_history", chat_history)
     await resp.send()
