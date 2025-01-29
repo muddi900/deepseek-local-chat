@@ -4,3 +4,4 @@ __pycache__
 chainlit.md
 .mypy*
 .files
+.vscode
