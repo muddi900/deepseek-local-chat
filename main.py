@@ -38,3 +38,10 @@ async def on_message(message: cl.Message):
 
     cl.user_session.set("chat_history", chat_history)
     await resp.send()
+
+
+if __name__ == "__main__":
+    if os.getenv("CL_DEBUG"):
+        from chainlit.cli import run_chainlit
+
+        run_chainlit(__file__)
