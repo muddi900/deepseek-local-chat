@@ -42,10 +42,10 @@ Create a virtualenv, I am using version 3.12, but it should be usable for 3.10+:
 python3.12 -m venv venv
 ```
 
-I am using Chainlit to build the UI and ollama for code formatting
+I am using Chainlit to build the UI and ollama as a backend
 
 ```bash
-pip install chainlit ollama
+pip install -r requirements.txt
 ```
 
 ## Run
