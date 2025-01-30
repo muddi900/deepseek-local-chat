@@ -2,8 +2,6 @@ import os
 import chainlit as cl
 import ollama
 
-# from dotenv import load_dotenv
-
 import logging
 
 if os.getenv("R1_VARIANT", "") not in ollama.ps().models:

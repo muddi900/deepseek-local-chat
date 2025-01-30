@@ -11,7 +11,7 @@ chevron==0.14.0
 click==8.1.8
 dataclasses-json==0.6.7
 Deprecated==1.2.18
-fastapi==0.115.7
+fastapi==0.115.8
 filetype==1.2.0
 googleapis-common-protos==1.66.0
 grpcio==1.70.0
