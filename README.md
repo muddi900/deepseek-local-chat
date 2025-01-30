@@ -8,16 +8,23 @@ Deepseek R1 is an open source model that is on par with most commercial models i
 
 We are using the Ollama backend for this. You can find the instruction to install on your platform on the ollama [site](https://ollama.com/download)
 
-Install the deepseek model locally and run it for testing
-
+Add the DeepSeek R1 model you want to use to your environment variables.
 
 ```bash
 export R1_VARIANT=deepseek-r1:7b #add the variant you want to work with on locally.
-ollama run $R1_VARIANT
 ```
-I am running it on a laptop with on 16 gigs of memory and a simple GPU, so I am running the 7b variant. If you have a high-end gpu with a large memory size, you can use higher-end variants. 
+
+For Windows,
+
+```powershell
+env:R1_VARIANT=deepseek-r1:7b
+```
+
+If you do not set your variant, it will default to `deepseek-r1:1.5b`. That is the simplest variant with the lowest hardware requirements.
 
 If you are low on memory, you can use the 1.5b variant. Press `ctrl+d` or `control+d` to get out of the cli interface.
+
+**NOTE**: If you haven't downloaded the model locally, the app will download it for you. However, the file sizes can be quite large, so you may have to wait.
 
 
 You need to run ollama as a server.
