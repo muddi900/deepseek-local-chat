@@ -1,9 +1,17 @@
 import os
 import chainlit as cl
 import ollama
-from dotenv import load_dotenv
 
-load_dotenv()
+# from dotenv import load_dotenv
+
+import logging
+
+if os.getenv("R1_VARIANT", "") not in ollama.ps().models:
+    pull = ollama.pull(os.getenv("R1_VARIANT", "deepseek-r1:1.5b"), stream=True)
+
+    for prog in pull:
+        if all([prog.total, prog.completed]):
+            logging.info(f"{prog.completed / prog.total:.2%}")  # type: ignore
 
 
 @cl.on_chat_start
@@ -17,13 +25,15 @@ async def on_message(message: cl.Message):
     chat_history.append({"role": "user", "content": message.content})
 
     resp = cl.Message(content="")
+
     chat_resp = ollama.chat(
-        model=os.getenv("R1_VARIANT", "deepseek-r1:7b"),
+        model=os.getenv("R1_VARIANT", ""),
         messages=chat_history,
         stream=True,
     )
 
     final = ""
+
     for cr in chat_resp:
         t = cr["message"]["content"]
         final += t
